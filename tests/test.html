@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html><head><title>Tests</title></head>
+<body>
+<script src="../popup.js"></script>
+<script>
+const {generate, clean} = window.__ttg;
+let pass = 0, fail = 0;
+function assert(cond, msg) {
+  if (cond) { pass++; console.log('✓ ' + msg); }
+  else { fail++; console.error('✗ ' + msg); }
+}
+
+// 5 titles
+let r = generate('Valorant','competitive','rank_up',true,5);
+assert(r.length === 5, '5 titles generated');
+
+// 10 titles
+r = generate('Valorant','competitive','rank_up',true,10);
+assert(r.length === 10, '10 titles generated');
+
+// No duplicates
+assert(new Set(r).size === r.length, 'No duplicates in batch of 10');
+
+// Game appears
+r = generate('Fortnite','chill','grinding',true,5);
+assert(r.every(t => t.includes('Fortnite')), 'Game appears in all titles');
+
+// Emoji OFF
+r = generate('Apex','competitive','rank_up',false,5);
+const emojiRe = /[\u{1F300}-\u{1F9FF}]/u;
+assert(r.every(t => !emojiRe.test(t)), 'No emoji when disabled');
+
+// Emoji ON
+r = generate('Apex','competitive','rank_up',true,5);
+assert(r.some(t => emojiRe.test(t)), 'Emoji present when enabled');
+
+// Different styles produce different output (probabilistic but strong)
+const s1 = new Set(generate('Test','competitive','rank_up',false,10));
+const s2 = new Set(generate('Test','chill','rank_up',false,10));
+const overlap = [...s1].filter(x => s2.has(x)).length;
+assert(overlap < 10, 'Different styles produce different phrasing');
+
+// Goal affects output
+const g1 = generate('Test','competitive','rank_up',false,10).join(' ');
+const g2 = generate('Test','competitive','viewer_games',false,10).join(' ');
+assert(g1 !== g2, 'Goal affects output');
+
+// No double spaces
+r = generate('Valorant','funny','grinding',true,10);
+assert(r.every(t => !t.includes('  ')), 'No double spaces');
+
+// No unresolved placeholders
+assert(r.every(t => !t.includes('{') && !t.includes('}')), 'No unresolved placeholders');
+
+// Clean function
+assert(clean('Hello  World') === 'Hello World', 'clean removes double spaces');
+assert(clean('| Hello') === 'Hello', 'clean removes leading separator');
+
+// All styles work
+const styles = ['competitive','chill','funny','ranked','casual','educational','challenge','community','speedrun','first_playthrough'];
+styles.forEach(s => {
+  const t = generate('Game',s,'grinding',true,5);
+  assert(t.length === 5, `Style "${s}" generates 5 titles`);
+});
+
+// All goals work
+const goals = ['rank_up','grinding','road_to_rank','first_playthrough','learning','challenge_run','viewer_games','high_score','speedrun','just_having_fun'];
+goals.forEach(g => {
+  const t = generate('Game','competitive',g,true,5);
+  assert(t.length === 5, `Goal "${g}" generates 5 titles`);
+});
+
+console.log(`\n${pass} passed, ${fail} failed`);
+document.title = fail === 0 ? 'ALL PASSED' : `${fail} FAILED`;
+</script>
+</body>
+</html>

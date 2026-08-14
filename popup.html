@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=400">
+  <link rel="stylesheet" href="popup.css">
+  <title>Geminos Twitch Title Generator</title>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Geminos Twitch Title Generator</h1>
+      <p class="subtitle">Free title ideas for Twitch streamers</p>
+    </header>
+
+    <div class="form">
+      <label for="game">Game / Category</label>
+      <input type="text" id="game" placeholder="e.g. Valorant" maxlength="80" autocomplete="off">
+      <div id="error" class="error" hidden>Enter a game or stream category first.</div>
+
+      <label for="style">Stream Style</label>
+      <select id="style">
+        <option value="competitive">Competitive</option>
+        <option value="chill">Chill</option>
+        <option value="funny">Funny</option>
+        <option value="ranked">Ranked</option>
+        <option value="casual">Casual</option>
+        <option value="educational">Educational</option>
+        <option value="challenge">Challenge</option>
+        <option value="community">Community</option>
+        <option value="speedrun">Speedrun</option>
+        <option value="first_playthrough">First Playthrough</option>
+      </select>
+
+      <label for="goal">Goal</label>
+      <select id="goal">
+        <option value="rank_up">Rank Up</option>
+        <option value="grinding">Grinding</option>
+        <option value="road_to_rank">Road to Rank</option>
+        <option value="first_playthrough">First Playthrough</option>
+        <option value="learning">Learning</option>
+        <option value="challenge_run">Challenge Run</option>
+        <option value="viewer_games">Viewer Games</option>
+        <option value="high_score">High Score</option>
+        <option value="speedrun">Speedrun</option>
+        <option value="just_having_fun">Just Having Fun</option>
+      </select>
+
+      <div class="row">
+        <div class="checkbox-wrap">
+          <input type="checkbox" id="emoji" checked>
+          <label for="emoji">Include emoji</label>
+        </div>
+        <div class="count-wrap">
+          <label for="count">Titles</label>
+          <select id="count">
+            <option value="5">5</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+      </div>
+
+      <button id="generate" class="btn-primary">Generate Titles</button>
+    </div>
+
+    <div id="results" class="results" hidden>
+      <div id="cards"></div>
+      <div class="actions">
+        <button id="again" class="btn-secondary">Generate Again</button>
+        <button id="copyAll" class="btn-secondary">Copy All</button>
+        <button id="clear" class="btn-secondary">Clear</button>
+      </div>
+    </div>
+
+    <footer>
+      <span>Free tool by <a href="https://geminos.io/" target="_blank" rel="noopener noreferrer">Geminos</a></span>
+      <a href="https://geminos.io/" target="_blank" rel="noopener noreferrer" class="btn-link">Visit Geminos.io</a>
+    </footer>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

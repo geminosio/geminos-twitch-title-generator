@@ -1,0 +1,39 @@
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{width:400px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:13px;color:#e5e5e5;background:#18181b}
+.app{padding:16px 18px 14px}
+header{text-align:center;margin-bottom:14px}
+h1{font-size:15px;font-weight:700;color:#fff;letter-spacing:.2px}
+.subtitle{font-size:11px;color:#adadb8;margin-top:2px}
+label{display:block;font-size:11px;font-weight:600;color:#adadb8;margin-bottom:4px;text-transform:uppercase;letter-spacing:.4px}
+input[type="text"],select{width:100%;padding:8px 10px;border:1px solid #303036;border-radius:6px;background:#0e0e10;color:#efeff1;font-size:13px;outline:none;transition:border-color .15s}
+input[type="text"]:focus,select:focus{border-color:#9147ff}
+select{cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23adadb8'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
+.form>label{margin-top:10px}
+.form>label:first-child{margin-top:0}
+.error{color:#eb5454;font-size:11px;margin-top:4px}
+.row{display:flex;align-items:center;justify-content:space-between;margin-top:12px}
+.checkbox-wrap{display:flex;align-items:center;gap:6px}
+.checkbox-wrap label{margin:0;text-transform:none;font-weight:400;font-size:13px;color:#dedee3;cursor:pointer}
+input[type="checkbox"]{width:16px;height:16px;accent-color:#9147ff;cursor:pointer}
+.count-wrap{display:flex;align-items:center;gap:6px}
+.count-wrap label{margin:0}
+.count-wrap select{width:60px}
+.btn-primary{width:100%;margin-top:14px;padding:10px;border:none;border-radius:6px;background:#9147ff;color:#fff;font-size:13px;font-weight:600;cursor:pointer;transition:background .15s}
+.btn-primary:hover{background:#772ce8}
+.btn-primary:active{background:#5c16c5}
+.results{margin-top:16px}
+.card{background:#26262c;border-radius:6px;padding:10px 12px;margin-bottom:8px;display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.card-body{flex:1;min-width:0}
+.card-title{font-size:13px;color:#efeff1;word-break:break-word;line-height:1.4}
+.card-chars{font-size:10px;color:#7a7a85;margin-top:3px}
+.btn-copy{flex-shrink:0;padding:5px 10px;border:1px solid #9147ff;border-radius:4px;background:transparent;color:#bf94ff;font-size:11px;font-weight:600;cursor:pointer;transition:all .15s;white-space:nowrap}
+.btn-copy:hover{background:#9147ff;color:#fff}
+.btn-copy.copied{border-color:#00c853;color:#00c853;pointer-events:none}
+.actions{display:flex;gap:8px;margin-top:10px}
+.btn-secondary{flex:1;padding:8px;border:1px solid #303036;border-radius:6px;background:transparent;color:#dedee3;font-size:12px;font-weight:500;cursor:pointer;transition:all .15s}
+.btn-secondary:hover{border-color:#9147ff;color:#bf94ff}
+footer{margin-top:18px;padding-top:12px;border-top:1px solid #26262c;display:flex;align-items:center;justify-content:space-between;font-size:11px;color:#7a7a85}
+footer a{color:#bf94ff;text-decoration:none}
+footer a:hover{text-decoration:underline}
+.btn-link{padding:4px 10px;border:1px solid #303036;border-radius:4px;font-size:11px;font-weight:500;transition:border-color .15s}
+.btn-link:hover{border-color:#9147ff;text-decoration:none!important}
